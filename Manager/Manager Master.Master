@@ -1,0 +1,155 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Manager Master.Master.cs" Inherits="Factory_Automation_Integrated_System.Manager.Manager_Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+                    <asp:Image ID="Image1" runat="server" style="background-image: url();" class="img logo rounded-circle mb-5"/>
+	                <ul class="list-unstyled components mb-5">
+	                <li>
+	                    <a href="Index Manager.aspx">Home</a>
+	                </li>
+                    <li>
+                        <a href="#ageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Review Data</a>
+                        <ul class="collapse list-unstyled" id="ageSubmenu">
+                            <li>
+                                <a href="Customers Account.aspx">Review Customers Account</a>
+                            </li>
+                            <li>
+                                <a href="Suppliers Account.aspx">Review Suppliers Account</a>
+                            </li>
+                            <li>
+                                <a href="Employees Account.aspx">Review Employees Account</a>
+                            </li>
+                        </ul>
+	                </li>
+                    <li>
+                      <a href="#geSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Stock Control</a>
+                      <ul class="collapse list-unstyled" id="geSubmenu">
+                        <li>
+                            <a href="Materials Data.aspx">Review Materials Data</a>
+                        </li>
+                          <li>
+                            <a href="Products Data.aspx">Review Products Data</a>
+                          </li>
+                      </ul>
+	                </li>
+                    <li>
+                        <a href="#eSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Transaction data</a>
+                        <ul class="collapse list-unstyled" id="eSubmenu">
+                            <li>
+                                <a href="Purchase Bill.aspx">Review Purchases Data</a>
+                            </li>
+                            <li>
+                                <a href="Sale Bill.aspx">Review Sales Data</a>
+                            </li>
+                              <li>
+                                <a href="Discount Material Data.aspx">Review Discount Material Data</a>
+                            </li>
+                              <li>
+                                <a href="Puechase Product Data.aspx">Review Puechase Product Data</a>
+                            </li>
+                              <li>
+                                <a href="Production Line Data.aspx">Review Production Line Data</a>
+                            </li>
+                        </ul>
+	                </li>
+                        <li>
+                        <a href="#eSubmen" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Online Order</a>
+                        <ul class="collapse list-unstyled" id="eSubmen">
+                            <li>
+                              <a href="Aproval Page.aspx">Approve Customer Account</a>
+                            </li>
+                            <li>
+                                <a href="Add Product.aspx">ADD Product</a>
+                            </li>
+                            <li>
+                                <a href="Approve Orders.aspx">Approve Orders</a>
+                            </li>
+                            <li>
+                                <a href="Review Orders.aspx">Review Orders</a>
+                            </li>
+                        </ul>
+	                </li>
+                    <li>
+                        <a href="Pay Roll Data.aspx">Pay Roll Data</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Messages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a class="nav-link" href="In Box.aspx">In Box</a>
+                            </li> 
+                            <li>
+                                <a href="Review Message.aspx">Review Sending Message</a>
+	                        </li>
+                            <li>
+                                <a href="Contact Page.aspx">Send Message</a>
+                            </li>
+                        </ul>
+	                </li>
+	                <li>
+                        <a href="Portfolio Page.aspx">Portfolio</a>
+	                </li>
+                    <li>
+	                    <a href="../About Page.aspx">About</a>
+	                </li>
+                    <li>
+	                    <a href="../Sign In Manager.aspx">Log Out</a>
+	                </li>
+	              </ul>
+	              <div class="footer">
+                      <p class="text-white text-center">© Powered By FUE Team © 2022 - Company. - <a href="Index Page.aspx">Privacy</a> - <a href="Index Page.aspx">Terms</a></p>
+                  </div>
+	            </div>
+    	    </nav>
+        <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="container-fluid">
+                      <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                          <i class="fa fa-bars"></i>
+                          <span class="sr-only">Toggle Menu</span>
+                      </button>
+                      <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                              <li class="nav-item">
+                                  <a class="nav-link" href="Index Manager.aspx">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="../About Page.aspx">About</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="../Sign In Manager.aspx">Log Out</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+            </nav>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+      </div>
+	</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿string Name = "";
+                int Categoery = 0;
+                string qt = list.SelectedItem.ToString();
+                int q = Convert.ToInt32(qt);
+                string idt = e.CommandArgument.ToString();
+                int id = Convert.ToInt32(idt)
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = "Data Source=DESKTOP-9E272F5\\MSSQLSERVER01;Initial Catalog=Factory Database;Integrated Security=True";
+                string strSelect = "SELECT * FROM Product WHERE Product_ID = '" +  + "'";
+                SqlCommand cmdSelect = new SqlCommand(strSelect, conn);
+                SqlDataReader reader;
+                conn.Open();
+                reader = cmdSelect.ExecuteReader();
+                if (reader.Read())
+                {
+                    Name = (string)reader.GetString(2);
+                    Categoery = (int)reader.GetInt32(6);
+                }
+                int total = Categoery * q;
+                string strins = string.Format("INSERT INTO Choose_order VALUES ('{0}','{1}','{2}','{3}','{4}')", e.CommandArgument, Name, q, Categoery, total);
+                SqlCommand cmd = new SqlCommand(strins, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();

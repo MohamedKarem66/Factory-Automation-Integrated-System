@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Factory_Automation_Integrated_System.Manager
+{
+    public partial class Purchases_Data : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            GridView1.Visible = false;
+            GridView3.Visible = false;
+            GridView2.Visible = true;
+            if (TextBox1.Text == "")
+            {
+                GridView2.Visible = false;
+                GridView1.Visible = true;
+                GridView3.Visible = false;
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (GridView1.SelectedIndex != -1)
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = "Data Source=DESKTOP-9E272F5\\MSSQLSERVER01;Initial Catalog=Factory Database;Integrated Security=True";
+                string id = GridView1.SelectedRow.Cells[0].Text;
+                string display1 = string.Format("SELECT * FROM Purchase_Bill WHERE Purchase_ID ='" + id + "'");
+                SqlCommand cmddis = new SqlCommand(display1, conn);
+                DataTable tlb = new DataTable();
+                conn.Open();
+                tlb.Load(cmddis.ExecuteReader());
+                GridView3.DataSource = tlb;
+                GridView3.DataBind();
+                GridView1.Visible = false;
+                GridView2.Visible = false;
+                conn.Close();
+            }
+            else if (GridView2.SelectedIndex != -1)
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = "Data Source=DESKTOP-9E272F5\\MSSQLSERVER01;Initial Catalog=Factory Database;Integrated Security=True";
+                string id = GridView1.SelectedRow.Cells[0].Text;
+                string display1 = string.Format("SELECT * FROM Purchase_Bill WHERE Purchase_ID ='" + id + "'");
+                SqlCommand cmddis = new SqlCommand(display1, conn);
+                DataTable tlb = new DataTable();
+                conn.Open();
+                tlb.Load(cmddis.ExecuteReader());
+                GridView3.DataSource = tlb;
+                GridView3.DataBind();
+                GridView1.Visible = false;
+                GridView2.Visible = false;
+                conn.Close();
+            }
+            else
+            {
+                Label1.Text = "No Bill Selected !! Select a Bill, Then Click The Button Select";
+            }
+        }
+    }
+}
+<%@ Page Title="" Language="C#" MasterPageFile="~/Manager/Manager Master.Master" AutoEventWireup="true" CodeBehind="Purchases Data1.aspx.cs" Inherits="Factory_Automation_Integrated_System.Manager.Purchases_Data" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/animate.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/util.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/main2.css">
+    <link rel="icon" href="https://img.freepik.com/free-vector/letter-f-initial-icon-logo-template_23987-54.jpg?w=2000" sizes="32x32" type="image/png"/>
+    <title>Purchase Data</title>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form id="form1" runat="server">
+    <h1>Purchase Data
+        <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter Suppler ID." OnTextChanged="TextBox1_TextChanged"></asp:TextBox>    
+    </h1>
+        <asp:Button ID="Button1" runat="server" Text="Select Bill" class="contact100-form-btn" BackColor="#E3B04B" Height="34px" OnClick="Button1_Click"/>
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Medium" Font-Underline="True" ForeColor="Maroon"></asp:Label>
+        <asp:GridView ID="GridView1" runat="server" class="table table-bordered table-condensed table-responsive table-hover " AutoGenerateColumns="False" DataKeyNames="Purchases_ID" DataSourceID="SqlDataSource1" AllowSorting="True">
+            <Columns>
+                <asp:BoundField DataField="Purchases_ID" HeaderText="Purchases_ID" ReadOnly="True" SortExpression="Purchases_ID" />
+                <asp:BoundField DataField="Purchases_Date" HeaderText="Purchases_Date" SortExpression="Purchases_Date" />
+                <asp:BoundField DataField="Purchases_Descreption" HeaderText="Purchases_Descreption" SortExpression="Purchases_Descreption" />
+                <asp:BoundField DataField="Purchases_Supplier_ID" HeaderText="Purchases_Supplier_ID" SortExpression="Purchases_Supplier_ID" />
+                <asp:BoundField DataField="Purchases_Disccount" HeaderText="Purchases_Disccount" SortExpression="Purchases_Disccount" />
+                <asp:BoundField DataField="Purchases_Total" HeaderText="Purchases_Total" SortExpression="Purchases_Total" />
+                <asp:CommandField ButtonType="Button" HeaderText="Select Item" ShowSelectButton="True">
+                <ControlStyle CssClass="form-control btn btn-primary rounded submit px-3" />
+                </asp:CommandField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Factory DatabaseConnectionString %>" SelectCommand="SELECT * FROM [Purchases]"></asp:SqlDataSource>
+        <br />
+        <asp:GridView ID="GridView2" runat="server" class="table table-bordered table-condensed table-responsive table-hover " AutoGenerateColumns="False" DataKeyNames="Purchases_ID" DataSourceID="SqlDataSource2" AllowSorting="True" Visible="False">
+            <Columns>
+                <asp:BoundField DataField="Purchases_ID" HeaderText="Purchases_ID" ReadOnly="True" SortExpression="Purchases_ID" />
+                <asp:BoundField DataField="Purchases_Date" HeaderText="Purchases_Date" SortExpression="Purchases_Date" />
+                <asp:BoundField DataField="Purchases_Descreption" HeaderText="Purchases_Descreption" SortExpression="Purchases_Descreption" />
+                <asp:BoundField DataField="Purchases_Supplier_ID" HeaderText="Purchases_Supplier_ID" SortExpression="Purchases_Supplier_ID" />
+                <asp:BoundField DataField="Purchases_Disccount" HeaderText="Purchases_Disccount" SortExpression="Purchases_Disccount" />
+                <asp:BoundField DataField="Purchases_Total" HeaderText="Purchases_Total" SortExpression="Purchases_Total" />
+                <asp:CommandField ButtonType="Button" HeaderText="Select Item" ShowSelectButton="True">
+                <ControlStyle CssClass="form-control btn btn-primary rounded submit px-3" />
+                </asp:CommandField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Factory DatabaseConnectionString %>" SelectCommand="SELECT * FROM [Purchases] WHERE ([Purchases_Supplier_ID] = @Purchases_Supplier_ID)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TextBox1" Name="Purchases_Supplier_ID" PropertyName="Text" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:GridView ID="GridView3" runat="server" class="table table-bordered table-condensed table-responsive table-hover " AutoGenerateColumns="False" AllowSorting="True" Visible="False">
+        </asp:GridView>
+    </form>
+</asp:Content>

@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Customer Master.master.cs" Inherits="Factory_Automation_Integrated_System.Customer.Customer_Master" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+		  		<asp:Image ID="Image1" runat="server" style="background-image: url();" class="img logo rounded-circle mb-5"/>
+	            <ul class="list-unstyled components mb-5">
+	              <li class="active">
+	                <a href="Customer Index.aspx" class="dropdown-toggle">Home</a>
+	              </li>
+                  <li>
+                    <a href="#pageSubmen" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Customer Order</a>
+                    <ul class="collapse list-unstyled" id="pageSubmen">
+                      <li>
+                          <a class="nav-link" href="Make Order.aspx">Make Order</a>
+                      </li>
+                      <li>
+                          <a href="MyCart.aspx">My Cart</a>
+	                  </li>
+                      <li>
+                          <a href="Order status.aspx">Order status</a>
+	                  </li>
+                      <li>
+                          <a href="Review Last Orders.aspx">Review Last Orders</a>
+                      </li>
+                    </ul>
+	              </li>
+	              <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Messages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                      <li>
+                          <a class="nav-link" href="In Box.aspx">In Box</a>
+                      </li> 
+                      <li>
+                          <a href="Review Message.aspx">Review Sending Message</a>
+	                  </li>
+                      <li>
+                          <a href="Contact Page.aspx">Send Message</a>
+                      </li>
+                    </ul>
+	              </li>
+	              <li>
+                       <a href="Portfolio Page.aspx">Portfolio</a>
+	              </li>
+                  <li>
+	                  <a href="../About Page.aspx">About</a>
+	              </li>
+                  <li>
+	                  <a href="../Sign In.aspx">Log Out</a>
+	              </li>
+	            </ul>
+	            <div class="footer">
+	        	    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	            </div>
+	        </div>
+    	</nav>
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                  <i class="fa fa-bars"></i>
+                  <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Customer Index.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About Page.aspx">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Sign In.aspx">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        </div>
+	</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    </form>
+</body>
+</html>
