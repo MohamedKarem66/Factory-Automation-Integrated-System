@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -44,7 +46,11 @@ namespace Factory_Automation_Integrated_System
                         coco.Expires = DateTime.Now.AddDays(3);
                         Response.Cookies.Add(coco);
                         Response.Redirect("~/Customer/Customer Index.aspx");
-                        Label1.Text = "";
+                        string mess = "Thanks for Sign Up in Factory Automation Integrated System." + "'\n'" +
+                    "the code to verify is " + conferm + "." + "'\n'" +
+                    "Don't share this code whis others.";
+                        string str = email.Text;
+                        sendEmail(str, mess);
                     }
                     else 
                     {
@@ -60,6 +66,26 @@ namespace Factory_Automation_Integrated_System
             catch (SqlException err)
             {
                 Label1.Text = err.Message;
+            }
+        }
+        protected void sendEmail(string str, string mess)
+        {
+            MailMessage msg = new MailMessage("factoryautomation662000@hotmail.com", str);
+            msg.Subject = "Sign Up Confirmation";
+            msg.Body = mess;
+            SmtpClient Sclient = new SmtpClient("smtp-mail.outlook.com", 587);
+            NetworkCredential auth = new NetworkCredential("factoryautomation662000@hotmail.com", "factory662000");
+            Sclient.UseDefaultCredentials = false;
+            Sclient.Credentials = auth;
+            Sclient.EnableSsl = true;
+            try
+            {
+                Sclient.Send(msg);
+                Response.Redirect("Test Email.aspx");
+            }
+            catch (Exception ex)
+            {
+                Label1.Text = ex.Message + str;
             }
         }
     }
